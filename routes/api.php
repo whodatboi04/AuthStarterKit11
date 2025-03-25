@@ -25,7 +25,7 @@ Route::group([
     //Forgot Password
     Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('auth.forgot-password');
     Route::post('reset-password', [ResetPasswordController::class, 'resetPassword'])->name('auth.reset-password');
-   
+
     Route::group([
         'middleware' => 'auth:api'
     ], function () {

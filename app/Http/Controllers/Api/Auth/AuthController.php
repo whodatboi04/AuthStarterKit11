@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-
+    //Login
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
@@ -21,21 +21,13 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+    //Get Active User
     public function getUser()
     {
         return response()->json(Auth::user());
     }
 
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+    //Logout
     public function logout()
     {
         Auth::logout();
@@ -43,26 +35,16 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+    //Refresh Token
     public function refresh()
     {
-        return $this->respondWithToken(Auth::refresh());
+        return $this->respondWithToken(Auth::refresh(), 'Refresh Token');
     }
 
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
+    //Respond With Token
+    protected function respondWithToken($token, $msg = 'Login Successfully')
     {
-        return $this->ok('Login Successfully',
+        return $this->ok($msg,
         [
             'access_token' => $token,
             'token_type' => 'bearer',
