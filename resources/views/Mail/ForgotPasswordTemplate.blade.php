@@ -3,9 +3,3 @@
 </p>
 
 <p>Token: {{ $token }}</p>
-
-<p>
-    {{-- <a href="{{ route('test', ['token' => $token]) }}">
-        Click Here to Proceed to Requirements Form
-    </a> --}}
-</p>

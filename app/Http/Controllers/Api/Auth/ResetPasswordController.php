@@ -30,11 +30,5 @@ class ResetPasswordController extends Controller
         return $this->ok('Successfully Reset Password');
 
     }
-    public function resetPasswordForm(string $token){
-        return (
-            "<form>
-            <input type='text' value='$token'/>
-            </form>"
-        );
-    }
+
 }
