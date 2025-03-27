@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel 11 Authentication Starter Kit with tymon/jwt-auth
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a back-end basic setup for implementing JWT authentication in a Laravel 11 project using the `tymon/jwt-auth` package. It provides an easy-to-follow guide to get you up and running with token-based authentication for your Laravel API.
 
-## About Laravel
+## Prerequisites
+- PHP 8.1 or higher
+- Composer
+- Laravel 11
+- A MySQL (or compatible) database
+- Node.js (for front-end development if needed)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation Steps
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Step 1: Clone Repository 
+```bash
+git clone https://github.com/whodatboi04/AuthStarterKit11.git
+```
+#### Step: 1.1 : Clone AuthWithForgotPassword Branch
+```bash
+git clone -b AuthWithForgotPassword https://github.com/whodatboi04/AuthStarterKit11.git
+```
+ 
+### Step 2: Composer Update
+```bash
+composer update
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Step 3: Install jwt secret key
+```bash
+php artisan jwt:secret
+```
+- jwt-auth documentation (https://jwt-auth.readthedocs.io/en/develop/)
 
-## Learning Laravel
+## For AuthWithForgotPassword Branch
+### Step 4: Mail Notification for Forgot Password
+ - Setup SMTP in your env file 
+ - Check this free SMTP for testing (https://mailtrap.io/)
+```bash
+php artisan queue:work
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Step 5: Php Serve
+```bash
+php artisan serve
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Step 6: Test the Authentication Endpoints
+You can use tools like Postman or Insomnia to test your authentication endpoints.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Register a User** by sending a POST request to /api/auth/register with name, email, password, and password_confirmation in the request body.
 
-## Laravel Sponsors
+2. **Login a User** by sending a POST request to /api/auth/login with email and password. If successful, you’ll receive a JWT token.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Logout a User** by sending a GET request to /api/auth/logout with the Authorization header set to Bearer YOUR_JWT_TOKEN.
 
-### Premium Partners
+# Conclusion
+You now have a working JWT-based authentication system in your Laravel 11 project using tymon/jwt-auth. This basic setup will allow you to authenticate users and issue JWT tokens for API access.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Additional Resources 
+ - JWT Auth Documentation (https://jwt-auth.readthedocs.io/en/develop/)
+ - Laravel 11 Documentation (https://laravel.com/docs/11.x/installation)
